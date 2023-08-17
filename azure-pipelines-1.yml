@@ -16,6 +16,13 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install
+    cd pratik-moradiya-test/
+    npm install 
     npm run build
   displayName: 'npm install and build'
+  workingDirectory: '$(Build.SourcesDirectory)'
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Build.ArtifactStagingDirectory)'
+    artifactName: 'angular-app'
